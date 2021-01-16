@@ -6,7 +6,6 @@ import time
 import unicodedata
 from concatenate_images import get_concat_v
 
-# background = Image.open("Fonts/myfont/a4.jpg")
 background = Image.open("./images/a4.jpg")
 SheetWidth = background.width
 SheetHeight = background.height
