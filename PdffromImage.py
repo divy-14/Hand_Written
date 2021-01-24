@@ -28,7 +28,6 @@ writing = "Style-5"
 
 # Initializing x and y
 x, y = margin + 20, margin + lineGap
-# Asking for the quality of the output
 scale_percent = 45
 
 
@@ -36,7 +35,6 @@ def space():
     # Just to add a space
     global x, y
 
-    # space = Image.open("Fonts/myfont/space.png")
     space = Image.open("./images/space.png")
 
     width = space.width
@@ -60,12 +58,9 @@ def writeAlphabet(path):
 
 def check_pageExceed(word="h"):
     global writing, pageNum, background, x, y, margin, lineGap, images_list
-    # new page
-    # print(background.height)
+
     if y >= 3100:
-        # print("page exceeded at ", word)
         images_list.append(background)
-        # bg = Image.open("Fonts/myfont/a4.jpg")
         bg = Image.open("./images/a4.jpg")
         background = bg
         x, y = margin+20, 0
@@ -176,8 +171,6 @@ def writeByLine(data):
         check_pageExceed()
 
         for word in data:
-            # if word == "":
-            #     continue
             ProcessNwrite(word)
             space()
 
@@ -208,7 +201,6 @@ def do_work(content, name):
     final_img = get_concat_v(images_list, res_width, res_height)
     ########################
     print("File Created Successfully")
-    # print(path)
     return final_img
 
 

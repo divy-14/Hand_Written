@@ -6,22 +6,10 @@ from io import BytesIO
 import base64
 import tempfile
 from PdffromImage import do_work
-
 import PdffromImage as dt
-
 import docx2txt
-from PyPDF2 import PdfFileReader
-import pdfplumber
-
-
 from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
-
-# faced problems with globals variables so used global variables from default test-> dt as
-# dt.background = Image.open("Fonts/myfont/a4.jpg")
-# to see the problem see python-test module in C drive
-
-# general download function
 
 
 def get_binary_file_downloader_html(bin_file, file_label='File'):
@@ -31,23 +19,12 @@ def get_binary_file_downloader_html(bin_file, file_label='File'):
     return f'<a href="data:application/octet-stream;base64,{bin_str}" download="{os.path.basename(bin_file)}"><input type="button" value="Download"></a>'
 
 
-st.markdown("<h1 style='text-align: center; color: black; ''> Digital to Handwritten text  <br><br> No more Assignments \U0000274E  \U0000270D </h1>",
+st.markdown("<h1 style='text-align: center; color: black; ''> Digital to Handwritten text  <br><br> No more Handwritten Assignments   \U0000270D </h1>",
             unsafe_allow_html=True)
-# st.markdown("<h1 style='text-align: center; color: white;background-color:black; opacity:0.4''> No more Assignments \U0000274E  \U0000270D </h1>",
-# unsafe_allow_html=True)
-# st.title('No more Assignments \U0000270D \U0000274E')
 
 st.markdown("<h3 style='text-align: right; color: black;'><b>by Divy Mohan Rai</b></h3>",
             unsafe_allow_html=True)
 
-# st.markdown(':negative_squared_cross_mark:'+':writing_hand:'+"<h3 style='text-align: right; color: Blue;'>by Divy Mohan Rai</h3>",
-#             unsafe_allow_html=True)
-# st.markdown("<h3 style='text-align: right; color: Blue;'>by Divy Mohan Rai</h3>",
-#             unsafe_allow_html=True)
-
-
-# main_bg = "./images/pyto.png"
-# main_bg = "./images/LIQUID.png"
 main_bg = "./images/t2.jpg"
 
 main_bg_ext = "jpg"
@@ -82,7 +59,8 @@ show_file = st.empty()
 
 # checking if user has uploaded any file
 if not uploaded_file:
-    show_file.info("Please Upload the text/docx document (no .doc only docx) ")
+    show_file.info(
+        "Please Upload the text/docx document (no .doc only .docx and .txt) ")
 
 
 if uploaded_file is not None:
@@ -116,7 +94,6 @@ if uploaded_file is not None:
 
         lines = raw_text.split("\n")  # splitting text on the basis of new line
 
-        # dt.background = Image.open("Fonts/myfont/a4.jpg")
         dt.background = Image.open("./images/a4.jpg")
 
         dt.SheetWidth = dt.background.width
@@ -132,11 +109,9 @@ if uploaded_file is not None:
         dt.maxLenPerPage = 3349
         dt.pageNum = 1
 
-        # dt.FontType = "Fonts/UV_font/"
         dt.FontType = os.path.join(root_font, style_name)
 
         dt.lineGap = 120
-        # dt.writing = "UV"
         dt.writing = style_name
 
         # Initializing x and y
