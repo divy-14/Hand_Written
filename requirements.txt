@@ -83,7 +83,7 @@ Send2Trash==1.5.0
 six==1.15.0
 smmap==3.0.4
 sortedcontainers==2.3.0
-streamlit==0.73.1
+streamlit==0.86.0
 terminado==0.9.1
 testpath==0.4.4
 toml==0.10.2
